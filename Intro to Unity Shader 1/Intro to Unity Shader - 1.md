@@ -235,16 +235,16 @@ Properties
 
 Each property which will be displayed in Unity inspector window defined in the **Properties** section. 
 
-
+![shader_properties_in_material_inspector_window.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_properties_in_material_inspector_window.png?raw=true)
 
 As you notice, only one texture declared. Within the capabilities of the target platform, you have the charge of declared properties as your wish.
 
 ### Subshader
 
-There can be more than one sub-shader in a shader, and there are a few types of them. When loading  the shader, Unity will use the first sub-shader that’s supported by the GPU. Each sub-shader contains a list of rendering passes. We’ll get back to this in the chapter on image effects.
+There can be more than one sub-shader in a shader, and there are a few types of them. When loading  the shader, Unity will use the first sub-shader that’s supported by the GPU. Each sub-shader contains a list of rendering passes. When processing  image effects, it's common to have several sub shaders.
 ### Tags
 
-Tags are key/value pairs that can express information, like which rendering queue to use. Transparent and opaque GameObjects are rendered in different rendering queues, which is why the code is specifying “Opaque”. We’ll come back to tags, but we don’t need to change them now.
+Tags are **key/value** pairs that can express information, like which rendering queue to use. Transparent and opaque GameObjects are rendered in different rendering queues, which is why the code is specifying “**Opaque**”. 
 
 ### Passes
 
@@ -253,7 +253,7 @@ Each pass contains information to set up the rendering and the actual shader cal
 
 ### CGPROGRAM ... ENDCG
 
-CGPROGRAM and ENDCG mark the beginning and the end of your commands.
+CGPROGRAM and ENDCG mark the beginning and the end of your HLSL commands.
 
 ### Pragma Statements
 
@@ -273,7 +273,7 @@ These provide a way to set options, like which functions should be used for the 
 ```
 
 
-The **library** files that need to be included to make this shader compile. The shader “library” in Unity is fairly extensive and little documented. Here we’re just including the UnityCG.cginc file. Output and Input Structures：
+The **library** files that need to be included to make this shader compile. The shader “library” in Unity is fairly extensive and little documented. Here we’re just including the **UnityCG.cginc** file. Output and Input Structures：
 
 ```csharp
 struct appdata
@@ -293,9 +293,9 @@ struct v2f
 };
 ```
 
-The vertex shader passes information to the fragment shader, through a struct  `v2f` . The vertex shader can request specific information through an input structure, which here is appdata. The words after the semicolons, such as `SV_POSITION`, are called semantics. They tell the compiler what type of information we want to store in that specific member of the structure. The `SV_POSITION` semantic, when attached to the vertex shader output, means that this member will contain the position of the vertex on the screen. 
+The vertex shader passes information to the fragment shader, through a struct  `v2f` . The vertex shader can request specific information through an input structure,  here is `appdata`. The words after the semicolons, such as `SV_POSITION`, are called semantics. They tell the compiler what type of information we want to store in that specific member of the structure. The `SV_POSITION` semantic, when attached to the vertex shader output, means this member will contain the position of the vertex on the screen. 
 
-You’ll see other semantic with prefix, SV, which stands for system value. This means they refer to a specific place in the pipeline. This distinction has been added in DirectX version 10; before that, all semantics were predefined.
+You’ll see other semantic with prefix **SV**, which stands for **System Value**. This means they refer to a specific place in the pipeline. This distinction has been added in DirectX version 10; before that, all semantics were predefined.
 
 ### Variable Declaration
 
@@ -332,14 +332,12 @@ fixed4 frag (v2f i) : SV_Target
 ```
 
 
-As defined by the **pragma** statement `#pragma` vertex name and #pragma fragment name, you can choose any function in the shader to serve as the vertex or fragment shader, but they need to conform to some requirements, which we’ll list in later chapters. Now you’re going to become more familiar with editing by making this shader live up to its name of **FlatShader**.
+As defined by the **pragma** statement `#pragma` vertex name and `#pragma` fragment name, you could choose any function in the shader to serve as the vertex or fragment shader. 
 
-### Shader Editing
+## Shader Editing
 
 In order to get used to shader editing, we’ll start by making some simple edits and getting rid of code that does not contribute to the final result.
-From White to Red.
-
-We’re going to change the final color of the mesh to be red. Double-click on the shader file, and  MonoDevelop (or Visual Studio, depending on your preferences) should open the file for you. It should show the file with syntax coloring, which will make it much easier to read. Let’s think about—what is the bare minimum we can do to make this shader output red—and then we’ll clean up the code that will become unused. If you think about the rendering pipeline, which we went through in Chapter 1, you’ll realize that if you hardcode the color you want at the end of the fragment function, where it returns col, you’ll basically overwrite any other calculation done up to then. The code shows you how to do this.
+From White to Red.	We’re going to change the final color of the mesh to be red. The code shows you how to do this.
 
 ```csharp
 fixed4 frag (v2f i) : SV_Target
@@ -348,10 +346,10 @@ fixed4 frag (v2f i) : SV_Target
 }
 ```
 
-`fixed4` is a type that contains four decimal numbers with fixed precision. fixed is less precise than half, which is less precise than float. In this case, it doesn’t matter which precision we choose. The format complies with **RGBA(Red, Green, Blue, Alpha)** fashion. Notice Alpha is mostly going to be ignored, unless you’re rendering in the Transparent queue.
+`fixed4` is a type that contains four decimal numbers with fixed precision. fixed is less precise than half, which is less precise than float. In this case, it doesn’t matter which precision we choose. The format complies with **RGBA(Red, Green, Blue, Alpha)** fashion. Notice **Alpha** is mostly going to be ignored, unless you’re rendering in the Transparent queue.
 
 ```csharp
-Shader "Unlit/RedShader"
+Shader "Unlit/FlatShader"
 {
     SubShader
     {
@@ -382,7 +380,7 @@ Shader "Unlit/RedShader"
     
             fixed4 frag(v2f i) : SV_Target
             {
-                return fixed4(1,0,0,1);
+                return fixed4(1,1,0,1);
             }
             
             ENDCG
@@ -391,17 +389,17 @@ Shader "Unlit/RedShader"
 }
 ```
 
-As you can see, anything related to textures and fog has been removed. What remains is responsible for rasterizing the triangles into pixels, by means of first calculating the position of the vertices. The rasterizing  part is not visible, as it implemented within the GPU, and it’s not programmable. You might remember that we mentioned many coordinate systems in the previous chapter. Here in the vertex function, there is a translation of the vertex position from Object Space, straight to Clip Space. That means the vertex position has been projected from a 3D coordinate space to a different 3D coordinate space which is more appropriate to the next set of calculations that the data will go through.  `UnityObjectToClipPos` is the function that does this translation. You don’t need to understand this right now, but you’ll encounter coordinate spaces again and again, so it pays to keep noticing them.  The next step (which happens automatically) is that that Clip Space vertex position is passed to the rasterizer functionality of the GPU (which sits between the vertex and fragment shaders). The output of the rasterizer will be interpolated values (pixel position, vertex color, etc.) belonging to a fragment.
+As you can see, anything related to textures and fog has been removed. What remains is responsible for rasterizing the triangles into pixels, by means of first calculating the position of the vertices. The rasterizing  part is not visible, as it implemented within the GPU, and it’s not programmable. Here`UnityObjectToClipPos`  is a translation of the vertex position from **Object Space** to **Clip Space**.  The next automatic step is to pass the  Clip Space vertex position to GPU  rasterizer (which sits between the vertex and fragment shaders). The output of the rasterizer will be interpolated values (pixel position, vertex color, etc.) belonging to a fragment.
 This interpolated data, contained within the `v2f` struct, will be passed to the fragment shader. The fragment shader will use it to calculate a final color for each of the fragments.
 
-Adding Properties
+### Adding Properties
 
 To avoid Hard coding, we refactor the red color shader value into a property under **Properties** block on the top. Here we introduce a property named `_Color` like the code below:
 
 ```csharp
 Properties
 {
-    _Color ("Color", Color) = (1,0,0,1)
+    _Color ("Color", Color) = (1,1,0,1)
 }
 ```
 
@@ -425,15 +423,58 @@ Now you know how to bind a property into the shader code.  Every shader code in 
 
 ### Final Code
 
+```
+Shader "Unlit/FlatShader"
+{
+    Properties {
+        _Color ("Color", Color) = (1,1,0,1)
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" }
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+            };
+                
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+            };
+
+            fixed4 _Color;
+            
+            v2f vert(appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                return o;
+            }
+    
+            fixed4 frag(v2f i) : SV_Target
+            {
+                return _Color;
+            }
+            
+            ENDCG
+        }
+    }
+}
+```
+
 
 
 ### Summary
 
-This chapter covered the shader editing workflow in Unity, including how the shader code maps to the
-rendering pipeline on the GPU. You made a very simple shader, which included both vertex and fragment
-functions, and you also learned a lot of ShaderLab syntax.
+This chapter covered the shader editing workflow in Unity, including how the shader code maps to the rendering pipeline on the GPU. You made a very simple shader, which included both vertex and fragment functions, and you also learned a lot of ShaderLab syntax.
 
 ### Next
 
-Now that you have some shading coding experience under your belt, the next chapter covers how shaders fit
-within the graphics pipeline in more detail
+Now that you have some shading coding experience under your belt, the next chapter covers how shaders fit within the graphics pipeline in more details.
