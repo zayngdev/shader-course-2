@@ -174,7 +174,13 @@ Shader "Unlit/DefaultUnlitShader"
 Shader "Unlit/DefaultUnlitShader"
 ```
 
-At the top line,  you could change the shader name, it indicates the shader path you need find  within the material. 
+At the top line,  you could change the shader name, it indicates the shader path you need find  within the material. It looks like the image below:
+
+![shader_path.png](https://github.com/zayngdev/shader-course-2/blob/main/pics/Intro%20to%20Unity%20Shader%20-%201/shader_path.png?raw=true)
+
+
+
+
 
 
 
