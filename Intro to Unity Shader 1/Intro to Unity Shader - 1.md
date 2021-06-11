@@ -105,9 +105,11 @@ Shader "Examples/ShaderSyntax"
 
 ## What a default ShaderLab code looks like
 
-Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is Unity 2020.3.10(LTS), when the editor is running, move the mouse into the the **Project** panel, and right, in the popup menu choose :  
+Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is **Unity 2020.3.10(LTS)**, when the editor is running, move the mouse into the the **Project** panel, and right, in the pop-up menu choose **Create -> Material -> Unlit Shader** , follow the image below:
 
-Once we create the unlit shader in Unity, we name it - **DefaultUnlitShader**. Below is the ShaderLab code:
+![create_shader_file.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/create_shader_file.png?raw=true)
+
+Once we create the unlit shader in Unity, we name it - **DefaultUnlitShader**. double click the shader file, in your code editor,  the ShaderLab code should be like this below, we look into the code and explain it later. 
 
 ```csharp
 Shader "Unlit/DefaultUnlitShader"
@@ -178,7 +180,11 @@ When the material has been created, in the **Project** panel, you could see blue
 
 ![shader_material.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_material.png?raw=true)
 
-Its name inherits from the ShaderLab name **UnlitDefaultUnlitShader**, when creating material using shaderlab code, Unity processes the shader name and splits it into two parts, combined with a underscore. For sure, you could change the name as you wish. 
+Its name inherits from the ShaderLab name **Unlit/DefaultUnlitShader**, when creating material using ShaderLab code, Unity processes the shader name and splits it into two parts, combining them with a underscore. Feel free to change the naming format, and make sure the file name and shader name match. 
+
+After left click the **Unlit_DefaultUnlitShader** material, in the **Inspector**  window, the materials properties look like the screen shot below:
+
+
 
 
 
@@ -197,8 +203,6 @@ At the top line,  you could change the shader name, it indicates the shader path
 Once you click the dropdown button at the left of **Shader** lable on the top, a menu will show up, in the menu click the Unlit menuitem, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined. 
 
 
-
-The filename and the path of the shader can be different (which can be quite treacherous), so changing the filename won’t change the shader path, and vice versa.
 
 ### Properties
 
