@@ -51,7 +51,7 @@ It can be used to :
 - Manager the shader behavior.
 - Help you with compatibility  management
 
-ShaderLab acts like a wrapper. It has a structure with several sections. An instance of the `Shader` class is called a **Shader object**. A Shader object is a Unity-specific way of working with shader programs; it is a wrapper for shader programs and other information. It lets you define multiple shader programs in the same file, and tell Unity how to use them.You use Shader objects with materials  to determine the appearance of your scene.
+ShaderLab acts like a wrapper. It has a structure with several sections. An instance of the `Shader` class is called a **Shader object**. A Shader object is a Unity-specific way of working with shader programs; it is a wrapper for shader programs and other information. It lets you define multiple shader programs in the same file, and tell Unity how to use them. You use Shader objects with materials  to determine the appearance of your scene.
 
 You can create Shader objects in two ways. Each has its own type of asset:
 
@@ -74,7 +74,7 @@ Shader "name"
 }
 ```
 
-Defines a shader. It will appear in the material inspector listed under `name`. Shaders optionally can define a list of properties that show up in material inspector. After this comes a list of `SubShaders` , and optionally a fallback and/or a custom editor declaration.
+Defines a shader. It will appear in the material inspector listed under `name`. Shaders optionally can define a list of properties that show up in material inspector. After this comes a list of `SubShaders` , and optionally a fall-back and/or a custom editor declaration.
 
 This example code demonstrates the basic syntax and structure of a `Shader` object. The example Shader object has a single `SubShader` that contains a single pass. It defines Material properties, a `CustomEditor`, and a `Fallback`.
 
@@ -184,11 +184,19 @@ Its name inherits from the ShaderLab name **Unlit/DefaultUnlitShader**, when cre
 
 After left click the **Unlit_DefaultUnlitShader** material, in the **Inspector**  window, the materials properties look like the screen shot below:
 
-![material_properties_inspector.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/material_properties_inspector.png?raw=true)
+<img src="https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/material_properties_inspector.png?raw=true" alt="material_properties_inspector.png" style="zoom:50%;" />
 
 Since no texture as input, the material displays the default white color. 
 
-Now, the material is ready to apply on 3D objects. We move the mouse cursor into the **Hierarchy** window, then right click, in the pop-up window, 
+Now, the material is ready to apply on 3D objects. We move the mouse cursor into the **Hierarchy** window, then right click, in the pop-up window, **choose 3D Object -> Cube** , like the screen shot below:
+
+<img src="https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/hierarchy_create_cube.png?raw=true" alt="hierarchy_create_cube.png" style="zoom:50%;" />
+
+
+
+The default cube looks something like this:
+
+
 
 
 
@@ -204,7 +212,7 @@ At the top line,  you could change the shader name, it indicates the shader path
 
 
 
-Once you click the dropdown button at the left of **Shader** lable on the top, a menu will show up, in the menu click the Unlit menuitem, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined. 
+Once you click the drop-down button at the left of **Shader** label on the top, a menu will show up, in the menu click the Unlit menu item, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined. 
 
 
 
