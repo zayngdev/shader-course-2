@@ -105,7 +105,7 @@ Shader "Examples/ShaderSyntax"
 
 ## What a default ShaderLab code looks like
 
-Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is **Unity 2020.3.10(LTS)**, when the editor is running, move the mouse into the the **Project** panel, and right, in the pop-up menu choose **Create -> Material -> Unlit Shader** , follow the image below:
+Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is **Unity 2020.3.10(LTS)**, when the editor is running, move the mouse cursor into the the **Project** panel, and right, in the pop-up menu choose **Create -> Material -> Unlit Shader** , follow the image below:
 
 ![create_shader_file.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/create_shader_file.png?raw=true)
 
@@ -176,7 +176,7 @@ Once the ShaderLab file created, you could not drag and drop the shader file to 
 
 ![img](https://raw.githubusercontent.com/zayngdev/shader-course-2/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/create_shader_bbasedon_shader.png)
 
-When the material has been created, in the **Project** panel, you could see blue material file like image below:
+When the material has been created, in the **Project** window, you could see blue material file like image below:
 
 ![shader_material.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_material.png?raw=true)
 
@@ -184,7 +184,11 @@ Its name inherits from the ShaderLab name **Unlit/DefaultUnlitShader**, when cre
 
 After left click the **Unlit_DefaultUnlitShader** material, in the **Inspector**  window, the materials properties look like the screen shot below:
 
+![material_properties_inspector.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/material_properties_inspector.png?raw=true)
 
+Since no texture as input, the material displays the default white color. 
+
+Now, the material is ready to apply on 3D objects. We move the mouse cursor into the **Hierarchy** window, then right click, in the pop-up window, 
 
 
 
