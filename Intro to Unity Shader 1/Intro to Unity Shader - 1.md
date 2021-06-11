@@ -103,7 +103,7 @@ Shader "Examples/ShaderSyntax"
 
 
 
-## What a default ShaderLab code looks like
+## What a default Unlit shader looks like
 
 Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is **Unity 2020.3.10(LTS)**, when the editor is running, move the mouse cursor into the the **Project** panel, and right, in the pop-up menu choose **Create -> Material -> Unlit Shader** , follow the image below:
 
@@ -196,9 +196,19 @@ Now, the material is ready to apply on 3D objects. We move the mouse cursor into
 
 The default cube looks something like this:
 
+![default_cube_with_default_shader.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/default_cube_with_default_shader.png?raw=true)
+
+The cube is using the  Unity default built in shader, the light and shadow are obvious. Once we drag the **Unlit_DefaultUnlitShader** material file onto the cube, it will look like this:
+
+![cube_with_unlit_default_shader.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/cube_with_unlit_default_shader.png?raw=true)
+
+The light and shadow are gone, only pure white.  Because the unlit shader does not define the lighting model to light up the object. In the further part the shader programming tutorial series. You will learn how to set up the lighting model. 
 
 
 
+## How the default Unlit shader works
+
+So far so good, now, you have gotten the basic feel of what the shader look like, after this. we will dig into the default unlit shader code to understand how the code works to display the white color. 
 
 ### Path and Name of the Shader
 
@@ -206,15 +216,13 @@ The default cube looks something like this:
 Shader "Unlit/DefaultUnlitShader"
 ```
 
-At the top line,  you could change the shader name, it indicates the shader path you need find  within the material. It looks like the image below:
+At the first line of shade code,  you could change the shader name, it indicates the shader path you need find  within the material. In material **Inspector** window It looks like this:
 
 <img src="https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_path.png?raw=true" alt="shader_path.png"  />
 
 
 
-Once you click the drop-down button at the left of **Shader** label on the top, a menu will show up, in the menu click the Unlit menu item, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined. 
-
-
+Once you click the drop-down button at the left of **Shader** label on the top, a menu will show up, in the drop-down menu, click the **Unlit** menu item, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined in the shader code.
 
 ### Properties
 
@@ -225,7 +233,11 @@ Properties
 }
 ```
 
-Each property which will be displayed in Unity inspector window defined in the Properties section. As you notice, only one texture declared. Within the capabilities of the target platform, you have the charge of declared properties as your wish.
+Each property which will be displayed in Unity inspector window defined in the **Properties** section. 
+
+
+
+As you notice, only one texture declared. Within the capabilities of the target platform, you have the charge of declared properties as your wish.
 
 ### Subshader
 
