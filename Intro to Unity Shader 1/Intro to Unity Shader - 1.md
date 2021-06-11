@@ -105,6 +105,8 @@ Shader "Examples/ShaderSyntax"
 
 ## What a default ShaderLab code looks like
 
+Open Unity Hub, we create a new Unity 3D project called **UnityShaderCodeLab**,  the editor version is Unity 2020.3.10(LTS), when the editor is running, move the mouse into the the **Project** panel, and right, in the popup menu choose :  
+
 Once we create the unlit shader in Unity, we name it - **DefaultUnlitShader**. Below is the ShaderLab code:
 
 ```csharp
@@ -168,6 +170,18 @@ Shader "Unlit/DefaultUnlitShader"
 }
 ```
 
+Once the ShaderLab file created, you could not drag and drop the shader file to the object to see the visual.  In computer graphics,  shaders only take effect when they attach to materials. In Unity, the quick way to wire a shader to material is to right click the shader file, in the pop up menu, choose, **Create -> Material**, like the screen shot below: 
+
+![img](https://raw.githubusercontent.com/zayngdev/shader-course-2/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/create_shader_bbasedon_shader.png)
+
+When the material has been created, in the **Project** panel, you could see blue material file like image below:
+
+![shader_material.png](https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_material.png?raw=true)
+
+Its name inherits from the ShaderLab name **UnlitDefaultUnlitShader**, when creating material using shaderlab code, Unity processes the shader name and splits it into two parts, combined with a underscore. For sure, you could change the name as you wish. 
+
+
+
 ### Path and Name of the Shader
 
 ```csharp
@@ -176,11 +190,11 @@ Shader "Unlit/DefaultUnlitShader"
 
 At the top line,  you could change the shader name, it indicates the shader path you need find  within the material. It looks like the image below:
 
-![shader_path.png](https://github.com/zayngdev/shader-course-2/blob/main/pics/Intro%20to%20Unity%20Shader%20-%201/shader_path.png?raw=true)
+<img src="https://github.com/zayngdev/shader-course-2/blob/main/Intro%20to%20Unity%20Shader%201/pics/Intro%20to%20Unity%20Shader%20-%201/shader_path.png?raw=true" alt="shader_path.png"  />
 
 
 
-
+Once you click the dropdown button at the left of **Shader** lable on the top, a menu will show up, in the menu click the Unlit menuitem, it will scroll to the next menu panel where you could find the **DefaultUnlitShader** you defined. 
 
 
 
